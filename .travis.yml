@@ -7,7 +7,7 @@ env:
 services:
     - sqlite3
 install:
-    - pipenv install
+    - pip install
 
 script:
     - py manage.py test
