@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %} Register {% endblock  %}
+{% block content %}
+<div class="row my-5">
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <div class="card">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSPUxEi_JyAPwwmrZ6Nvo4gbIPXW7uPdLgHNg&usqp=CAU">
+            <div class="card-body">
+                <a href="#" class="btn btn-sm btn-warning btn-block py-2"><i class="fab fa-google"></i> Login with Google</a>
+                <a href="#" class="btn btn-sm btn-primary btn-block py-2"><i class="fab fa-facebook"></i> Login with Facebook</a>
+            <div class="row">
+                <div class="col-md-5">
+                    <hr>
+                </div>
+                <div class="col-md-2">
+                    <p>OR</p>
+                </div>  
+                <div class="col-md-5">
+                    <hr>
+                </div>
+            </div>
+            <div>
+                {% include 'partials/_flash_messages.html' %}
+            </div>
+            <form action="{% url 'register' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email" value="{{data.email}}" class="form-control" id="email">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Username" value="{{data.username}}" name="username" id="username">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="First Name" value="{{data.first_name}}" name="first_name" id="firstName">
+                </div>
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Last Name" value="{{data.last_name}}" name="last_name" id="lastName">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Password" class="form-control" id="password">
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password2" placeholder="Confirm Password" class="form-control" id="password2">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Register</button>
+            </form>
+            <div class="py-3 px-2">
+                <p class="">Already have an Account? Please.. <a href="{% url 'login' %}">Login</a></p>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4"></div>
+    </div>
+</div>
+{% endblock  %}
